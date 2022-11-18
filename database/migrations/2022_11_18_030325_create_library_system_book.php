@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('library_system_book', function (Blueprint $table) {
             $table->id();
+            $table->string('name',100);
+            $table->string('author',30);
+            $table->decimal('flag', $precision = 1, $scale = 0);
             $table->timestamps();
         });
     }
