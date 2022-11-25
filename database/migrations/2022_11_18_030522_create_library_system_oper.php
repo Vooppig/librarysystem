@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('library_system_oper', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('name', 200);
+            $table->smallInteger('user_role')->references('id')->on('library_system_roles');
             $table->timestamps();
         });
     }

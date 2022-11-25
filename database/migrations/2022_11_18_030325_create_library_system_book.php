@@ -14,10 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('library_system_book', function (Blueprint $table) {
-            $table->id();
-            $table->string('name',100);
-            $table->string('author',30);
-            $table->decimal('flag', $precision = 1, $scale = 0);
+            $table->bigIncrements('id');
+            $table->string('name', 100);
+            $table->string('author', 30);
+            $table->smallInteger('flag');
+            $table->string('publisher', 100)->nullable();
+            $table->date('published_date')->nullable();
+            $table->decimal('isbn', 29, 0)->unique();
+            $table->decimal('price', 22, 2);
+            $table->text('detail');
             $table->timestamps();
         });
     }
