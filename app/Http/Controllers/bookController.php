@@ -24,8 +24,7 @@ class bookController extends Controller
     }
     public function  insert()
     {
-        $categories = DB::select('select * from bookcatergory');
-        //$categories = mod_book::all();
+        $categories = DB::select('select * from library_system_book_cat');
         return view('book.insertbook',['categories'=>$categories]);
 
     }
@@ -44,6 +43,8 @@ class bookController extends Controller
      $books->author=$request->author;
      $books->publisher=$request->publisher;
      $books->category=$request->category;
+     $books->flag=$request->flag;
+     $books->price=$request->price;
      $books->save();
      return redirect("insertbook");
     }

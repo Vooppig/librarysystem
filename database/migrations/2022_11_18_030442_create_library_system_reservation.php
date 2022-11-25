@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('library_system_reservation', function (Blueprint $table) {
             $table->id();
+            $table->integer('items_id');
+            $table->date('reserve_date');
+            $table->datetime('reserve_datetime');
+            $table->integer('created_by');
             $table->timestamps();
         });
     }

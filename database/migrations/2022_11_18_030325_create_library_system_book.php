@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('library_system_book', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 100);
+            $table->string('title', 100);
             $table->string('author', 30);
             $table->smallInteger('flag');
             $table->string('publisher', 100)->nullable();
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('isbn', 29, 0)->unique();
             $table->decimal('price', 22, 2);
             $table->text('detail');
+            $table->integer('category');
             $table->timestamps();
         });
     }

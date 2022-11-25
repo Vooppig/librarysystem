@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('library_system_flags', function (Blueprint $table) {
-            $table->id();
+            $table->decimal('id',1,0);
+            $table->string('name');
             $table->timestamps();
         });
     }
