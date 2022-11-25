@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//book
+Route::get('bookhome', function(){
+    return view('book.home');
+});
+Route::get('insertbook','App\Http\Controllers\bookController@insert');
+Route::post('insertbook','App\Http\Controllers\bookController@do_insert');
+Route::get('listbook', 'App\Http\Controllers\bookController@index');
+Route::get('deletebook/{id}', 'App\Http\Controllers\bookController@delete');
