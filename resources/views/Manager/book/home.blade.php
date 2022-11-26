@@ -1,15 +1,16 @@
-@extends('book.master')
+@extends('Manager.book.master')
 
 @section('title', 'nuur huudas')
 
 @section('style')
 <style>
-    h1{
+    h1 {
         background-color: pink;
         margin: 10px;
     }
-    p{
-        background-color:pink;
+
+    p {
+        background-color: pink;
         padding: 10px
     }
 </style>

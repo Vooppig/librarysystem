@@ -1,4 +1,4 @@
-@extends('book.master')
+@extends('Manager.book.master')
 @section('title', 'NUUR HUUDAS')
 
 @section('content')
