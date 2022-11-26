@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('items_id');
             $table->date('reserve_date');
             $table->datetime('reserve_datetime');
-            $table->integer('created_by');
+            $table->integer('created_by')->references('id')->on('library_system_member');
             $table->timestamps();
         });
     }

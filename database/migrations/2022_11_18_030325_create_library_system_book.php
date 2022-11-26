@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('title', 100);
             $table->string('author', 30);
-            $table->smallInteger('flag');
+            $table->smallInteger('flag')->references('id')->on('library_system_flags');
             $table->string('publisher', 100)->nullable();
             $table->date('published_date')->nullable();
             $table->decimal('isbn', 29, 0)->unique();

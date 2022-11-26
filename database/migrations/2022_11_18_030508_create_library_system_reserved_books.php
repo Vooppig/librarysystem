@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('library_system_reserved_books', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('res_id')->references('id')->on('library_system_reservation');
             $table->bigInteger('book_id')->references('id')->on('library_system_book');
             $table->integer('quantity');
             $table->timestamps();
