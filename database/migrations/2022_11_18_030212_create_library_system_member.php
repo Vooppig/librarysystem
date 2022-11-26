@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('reg_num', 10)->unique();
             $table->decimal('phone_num', 8, 0)->unique();
             $table->string('email', 100)->unique();
-            $table->decimal('credit_card_num', 16, 0)->unique();
+            $table->decimal('credit_card_num', 16, 0)->unique()->nullable();
             $table->smallInteger('role')->references('id')->on('library_system_roles');
             $table->timestamps();
         });

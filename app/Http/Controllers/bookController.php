@@ -25,27 +25,27 @@ class bookController extends Controller
     public function  insert()
     {
         $categories = DB::select('select * from library_system_book_cat');
-        return view('book.insertbook',['categories'=>$categories]);
-
+        $flags = DB::select('select * from library_system_flags');
+        return view('book.insertbook', ['categories' => $categories, 'flags' => $flags]);
     }
     public function do_insert(Request $request)
     {
-     //Form validation
-     $validated = $request->validate([
-     'isbn' =>'required',
-     'title'=>'required|max:30',
-     'author'=>'required|alpha'
-     ]);
-     //DB::insert("insert into books(isbn, author)",[$request->isbn, $request->author]);
-     $books = new book_lib;
-     $books->title=$request->title;
-     $books->isbn=$request->isbn;
-     $books->author=$request->author;
-     $books->publisher=$request->publisher;
-     $books->category=$request->category;
-     $books->flag=$request->flag;
-     $books->price=$request->price;
-     $books->save();
-     return redirect("insertbook");
+        //Form validation
+        $validated = $request->validate([
+            'isbn' => 'required',
+            'title' => 'required|max:30',
+            'author' => 'required|alpha'
+        ]);
+        //DB::insert("insert into books(isbn, author)",[$request->isbn, $request->author]);
+        $books = new book_lib;
+        $books->title = $request->title;
+        $books->isbn = $request->isbn;
+        $books->author = $request->author;
+        $books->publisher = $request->publisher;
+        $books->category = $request->category;
+        $books->flag = $request->flag;
+        $books->price = $request->price;
+        $books->save();
+        return redirect("insertbook");
     }
 }

@@ -6,8 +6,8 @@
 @foreach($books as $book)
 <tr>
     <td>{{ $book->isbn}}</td>
-    <td>{{ $book->Title}}</td>
-    <td>{{ $book->Author}}</td>
+    <td>{{ $book->title}}</td>
+    <td>{{ $book->author}}</td>
     <td>{{ $book->publisher}}</td>
     <td>{{ $book->category}}</td>
     <td><a href="deletebook/{{$book->book_id}}"> delete</td>

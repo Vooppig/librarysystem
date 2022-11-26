@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('published_date')->nullable();
             $table->decimal('isbn', 29, 0)->unique();
             $table->decimal('price', 22, 2);
-            $table->text('detail');
+            $table->text('detail')->nullable();
             $table->integer('category');
             $table->timestamps();
         });
