@@ -7,11 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\book_cat;
 use App\Models\book_lib;
-<<<<<<< HEAD
 use App\Models\User;
-=======
 use App\Models\book_flag;
-use App\Models\library_system_images;
 
 class bookController extends Controller
 {
