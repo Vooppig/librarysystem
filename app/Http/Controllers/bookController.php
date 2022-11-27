@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\mod_book;
+use App\Models\book_cat;
 use App\Models\book_lib;
+use App\Models\book_flag;
 
 class bookController extends Controller
 {
@@ -20,7 +21,7 @@ class bookController extends Controller
     {
         //read all data
         // $books = book_lib::all();
-        $books= DB::select('select a.*,b.name as cat_name,c.name as flag_name
+        $books = DB::select('select a.*,b.name as cat_name,c.name as flag_name
         from library_system_book as a 
         left join library_system_book_cat as b on a.category = b.id
         left join library_system_flags as c on a.flag = c.id;');
@@ -28,8 +29,8 @@ class bookController extends Controller
     }
     public function  insert()
     {
-        $categories = DB::select('select * from library_system_book_cat');
-        $flags = DB::select('select * from library_system_flags');
+        $categories = book_cat::all();
+        $flags = book_flag::all();
         return view('Manager.book.insertbook', ['categories' => $categories, 'flags' => $flags]);
     }
     public function do_insert(Request $request)
@@ -54,14 +55,14 @@ class bookController extends Controller
     }
     public function search_forum()
     {
-        $categories = DB::select('select * from library_system_book_cat');
-        $flags = DB::select('select * from library_system_flags');
+        $categories = book_cat::all();
+        $flags = book_flag::all();
         return view('Manager.book.search', ['categories' => $categories, 'flags' => $flags]);
     }
     public function search(Request $request)
     {
-        $categories = DB::select('select * from library_system_book_cat');
-        $flags = DB::select('select * from library_system_flags');
+        $categories = book_cat::all();
+        $flags = book_flag::all();
         $query = book_lib::all();
         if (isset($request->title))
             $query->where('title', $request->title);
@@ -79,8 +80,8 @@ class bookController extends Controller
     }
     public function update_forum($id)
     {
-        $categories = DB::select('select * from library_system_book_cat');
-        $flags = DB::select('select * from library_system_flags');
+        $categories = book_cat::all();
+        $flags = book_flag::all();
         $book = book_lib::find($id);
         return view('Manager.book.update', ['categories' => $categories, 'flags' => $flags, 'book' => $book]);
     }
