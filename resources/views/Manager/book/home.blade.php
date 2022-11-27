@@ -1,6 +1,6 @@
 @extends('Manager.book.master')
 
-@section('title', 'nuur huudas')
+@section('title', 'Нүүр хуудас')
 
 @section('style')
 <style>
@@ -17,8 +17,4 @@
 @endsection
 @section('content')
 <h1>This is Home Page</h1>
-<p>
-    This web site is library.
-    Welcome to our library.
-</p>
 @endsection

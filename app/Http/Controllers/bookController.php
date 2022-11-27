@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\mod_book;
 use App\Models\book_lib;
+use App\Models\User;
 
 class bookController extends Controller
 {
@@ -101,5 +102,13 @@ class bookController extends Controller
         $book->price = $request->price;
         $book->save();
         return redirect("listbook");
+    }
+    function register(Request $request)
+    {
+     return $request->input();
+    }
+    function login(Request $request)
+    {
+        return User::where('email',$request->input('email'))->get();
     }
 }
