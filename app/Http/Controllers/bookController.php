@@ -19,7 +19,11 @@ class bookController extends Controller
     public function index()
     {
         //read all data
-        $books = book_lib::all();
+        // $books = book_lib::all();
+        $books= DB::select('select a.*,b.name as cat_name,c.name as flag_name
+        from library_system_book as a 
+        left join library_system_book_cat as b on a.category = b.id
+        left join library_system_flags as c on a.flag = c.id;');
         return view('Manager.book.listbook', compact('books'));
     }
     public function  insert()
@@ -72,5 +76,30 @@ class bookController extends Controller
         if (isset($request->category))
             $query->where('category', $request->category);
         return view('Manager.book.search', ['categories' => $categories, 'flags' => $flags, 'results' => $query->get('0')]);
+    }
+    public function update_forum($id)
+    {
+        $categories = DB::select('select * from library_system_book_cat');
+        $flags = DB::select('select * from library_system_flags');
+        $book = book_lib::find($id);
+        return view('Manager.book.update', ['categories' => $categories, 'flags' => $flags, 'book' => $book]);
+    }
+    public function update(Request $request)
+    {
+        $validated = $request->validate([
+            'isbn' => 'required',
+            'title' => 'required|max:30',
+            'author' => 'required|alpha'
+        ]);
+        $book = book_lib::find($request->id);
+        $book->title = $request->title;
+        $book->isbn = $request->isbn;
+        $book->author = $request->author;
+        $book->publisher = $request->publisher;
+        $book->category = $request->category;
+        $book->flag = $request->flag;
+        $book->price = $request->price;
+        $book->save();
+        return redirect("listbook");
     }
 }

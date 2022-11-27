@@ -26,3 +26,5 @@ Route::get('listbook', 'App\Http\Controllers\bookController@index');
 Route::get('deletebook/{id}', 'App\Http\Controllers\bookController@delete');
 Route::get('booksearch', 'App\Http\Controllers\bookController@search_forum');
 Route::post('booksearch', 'App\Http\Controllers\bookController@search');
+Route::get('updatebook/{id}','App\Http\Controllers\bookController@update_forum');
+Route::post('updatebook','App\Http\Controllers\bookController@update');
