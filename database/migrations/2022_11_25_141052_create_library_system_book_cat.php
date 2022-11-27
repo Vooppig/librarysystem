@@ -36,7 +36,7 @@ return new class extends Migration
         );
         DB::table('library_system_book_cat')->insert(
             array(
-                'name' => 'Temuuder'
+                'name' => 'Science'
             )
         );
         DB::table('library_system_book_cat')->insert(

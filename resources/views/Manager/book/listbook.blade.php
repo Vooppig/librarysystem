@@ -10,7 +10,7 @@
         <td>{{ $book->author}}</td>
         <td>{{ $book->publisher}}</td>
         <td>{{ $book->category}}</td>
-        <td><a href="deletebook/{{$book->book_id}}"> delete</td>
+        <td><a href="deletebook/{{$book->id}}"> delete</td>
     </tr>
     @endforeach
 </table>
