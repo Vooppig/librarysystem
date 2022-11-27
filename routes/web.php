@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\bookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -9,25 +11,30 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| contains the "web" middleware group. Now   create something great!
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [ImageController::class, 'index']);
+
+Route::get('/form', [ImageController::class, 'form']);
+
+Route::post('/upload', [ImageController::class, 'upload']);
+
+
 //book
 Route::get('bookhome', function () {
     return view('Manager.book.home');
 });
-Route::get('insertbook', 'App\Http\Controllers\bookController@insert');
-Route::post('insertbook', 'App\Http\Controllers\bookController@do_insert');
-Route::get('listbook', 'App\Http\Controllers\bookController@index');
-Route::get('deletebook/{id}', 'App\Http\Controllers\bookController@delete');
-Route::get('booksearch', 'App\Http\Controllers\bookController@search_forum');
-Route::post('booksearch', 'App\Http\Controllers\bookController@search');
-Route::get('updatebook/{id}','App\Http\Controllers\bookController@update_forum');
-Route::post('updatebook','App\Http\Controllers\bookController@update');
+Route::get('insertbook', [bookController::class, 'insert']);
+Route::post('insertbook', [bookController::class, 'do_insert']);
+Route::get('listbook', [bookController::class, 'index']);
+Route::get('deletebook/{id}', [bookController::class, 'delete']);
+Route::get('booksearch', [bookController::class, 'search_forum']);
+Route::post('booksearch', [bookController::class, 'search']);
+Route::get('updatebook/{id}', [bookController::class, 'update_forum']);
+Route::post('updatebook', [bookController::class, 'update']);
 Route::view('register','register');
 Route::post('register', 'App\Http\Controllers\bookController@register');
 Route::view('login','login');

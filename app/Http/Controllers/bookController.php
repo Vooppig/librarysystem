@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use App\Models\book_cat;
 use App\Models\book_lib;
@@ -15,18 +16,18 @@ class bookController extends Controller
     //
     public function delete($id)
     {
-        //DB::delete('delete from books where book_id = ?', [$id]);
         book_lib::find($id)->delete();
         return redirect("listbook");
     }
     public function index()
     {
         //read all data
-        // $books = book_lib::all();
-        $books = DB::select('select a.*,b.name as cat_name,c.name as flag_name
+        $books = DB::select('select a.*,b.name as cat_name,c.name as flag_name,d.image
         from library_system_book as a 
         left join library_system_book_cat as b on a.category = b.id
-        left join library_system_flags as c on a.flag = c.id;');
+        left join library_system_flags as c on a.flag = c.id
+        left join library_system_images as d on d.book_id=a.id
+        ;');
         return view('Manager.book.listbook', compact('books'));
     }
     public function  insert()
@@ -41,9 +42,9 @@ class bookController extends Controller
         $validated = $request->validate([
             'isbn' => 'required',
             'title' => 'required|max:30',
-            'author' => 'required|alpha'
+            'author' => 'required|alpha',
+            'image' => 'required'
         ]);
-        //DB::insert("insert into books(isbn, author)",[$request->isbn, $request->author]);
         $books = new book_lib;
         $books->title = $request->title;
         $books->isbn = $request->isbn;
@@ -53,6 +54,12 @@ class bookController extends Controller
         $books->flag = $request->flag;
         $books->price = $request->price;
         $books->save();
+
+
+        //Номний зураг бүртгэх
+        $book = book_lib::where('isbn', $request->isbn);
+        app('App\Http\Controllers\ImageController')->uploadBookPicture($books->id, $request->image);
+
         return redirect("listbook");
     }
     public function search_forum()
@@ -78,7 +85,7 @@ class bookController extends Controller
             $query->where('publisher', $request->publisher);
         if (isset($request->category))
             $query->where('category', $request->category);
-        return view('Manager.book.search', ['categories' => $categories, 'flags' => $flags, 'results' => $query->get('0')]);
+        return view('Manager.book.search', ['categories' => $categories, 'flags' => $flags, 'results' => $query]);
     }
     public function update_forum($id)
     {
