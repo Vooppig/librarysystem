@@ -35,3 +35,7 @@ Route::get('booksearch', [bookController::class, 'search_forum']);
 Route::post('booksearch', [bookController::class, 'search']);
 Route::get('updatebook/{id}', [bookController::class, 'update_forum']);
 Route::post('updatebook', [bookController::class, 'update']);
+Route::view('register','register');
+Route::post('register', 'App\Http\Controllers\bookController@register');
+Route::view('login','login');
+Route::post('login', 'App\Http\Controllers\bookController@login');

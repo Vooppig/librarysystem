@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('library_system_reservation', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrement('id');
             $table->integer('items_id');
             $table->date('reserve_date');
             $table->datetime('reserve_datetime');
-            $table->integer('created_by')->references('id')->on('library_system_member');
+            $table->integer('created_by');
             $table->timestamps();
         });
     }

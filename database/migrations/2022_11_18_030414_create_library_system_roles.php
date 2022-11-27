@@ -34,7 +34,7 @@ return new class extends Migration
         DB::table('library_system_roles')->insert(
             array(
                 'id' => 3,
-                'name' => 'Менежир'
+                'name' => 'Менежер'
             )
         );
     }

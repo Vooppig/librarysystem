@@ -1,5 +1,5 @@
 @extends('Manager.book.master')
-@section('title', 'NUUR HUUDAS')
+@section('title', 'Ном нэмэх')
 
 @section('content')
 <form action="{{url('insertbook')}}" method="post" enctype="multipart/form-data">
