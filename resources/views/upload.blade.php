@@ -18,7 +18,7 @@
 
 <body>
 
-    <div class="container">
+     <div class="container">
 
         <div class="row pt-5">
 
@@ -26,39 +26,39 @@
 
                 <h1 class="text-ino mb-3 text-center">How to upload image in laravel 9</h1>
 
-                <div class="card">
+              <div class="card">
 
-                    <div class="card-header">Upload Images List</div>
+                <div class="card-header">Upload Images List</div>
 
-                    <div class="card-body">
+                <div class="card-body">
 
-                        <form action="{{url('/upload')}}" method="post" enctype="multipart/form-data">
+                      <form action="{{url('/upload')}}" method="post" enctype="multipart/form-data">
 
-                            @csrf
+                        @csrf
 
-                            <div class="form-group mb-3">
+                      <div class="form-group mb-3">
 
-                                <input type="file" name="image" id="" class="form-control">
+                        <input type="file" name="image" id="" class="form-control">
 
-                            </div>
+                      </div>
 
-                            <div class="form-group">
+                      <div class="form-group">
 
-                                <input type="submit" value="Upload Image" class="form-control btn btn-info">
+                        <input type="submit" value="Upload Image" class="form-control btn btn-info">
 
-                            </div>
+                      </div>
 
-                        </form>
-
-                    </div>
+                    </form>
 
                 </div>
+
+              </div>
 
             </div>
 
         </div>
 
-    </div>
+     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 
