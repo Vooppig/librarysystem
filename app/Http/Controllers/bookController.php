@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\book_cat;
 use App\Models\book_lib;
-use App\Models\User;
 use App\Models\book_flag;
-use Illuminate\Support\Facades\Crypt;
 
 class bookController extends Controller
 {
@@ -111,17 +109,5 @@ class bookController extends Controller
         $book->price = $request->price;
         $book->save();
         return redirect("listbook");
-    }
-    function register(Request $request)
-    {
-     $user = new User;
-     $user->name = $request->input('name');
-     
-    }
-    function login(Request $request)
-    {
-        $user = User::where('email',$request->input('email'))->get();
-        return Crypt::decrypt($user[0]->password);
-
     }
 }

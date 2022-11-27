@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('library_system_reservation', function (Blueprint $table) {
-            $table->bigIncrement('id');
+            $table->bigIncrements('id');
             $table->integer('items_id');
             $table->date('reserve_date');
             $table->datetime('reserve_datetime');

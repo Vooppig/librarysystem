@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\bookController;
+use App\Http\Controllers\loginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,4 @@ Route::post('updatebook', [bookController::class, 'update']);
 Route::view('register','register');
 Route::post('register', 'App\Http\Controllers\bookController@register');
 Route::view('login','login');
-Route::post('login', 'App\Http\Controllers\bookController@login');
+Route::post('login', [loginController::class, 'login']);

@@ -13,8 +13,8 @@
                 <p>{{ $book->cat_name }}</p>
                 <p>{{ $book->flag_name }}</p>
                 <p>
-                    <a href="{{url('deletebook')}}/{{ $book->id }}"> Delete</a>
-                    <a href="{{url('updatebook')}}/{{ $book->id }}"> Update</a>
+                    <a href="{{url('deletebook')}}/{{ $book->id }}"> Устгах</a>
+                    <a href="{{url('updatebook')}}/{{ $book->id }}"> Засварлах</a>
                 </p>
             </div>
         </div>
