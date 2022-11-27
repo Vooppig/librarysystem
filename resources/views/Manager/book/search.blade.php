@@ -1,7 +1,7 @@
 @extends('Manager.book.master')
 @section('title', 'NUUR HUUDAS')
 @section('content')
-<form action="booksearch" method="post">
+<form action="{{url('booksearch')}}" method="post">
     <div>
         <table>
             {{ csrf_field() }}

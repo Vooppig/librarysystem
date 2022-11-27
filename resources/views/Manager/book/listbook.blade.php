@@ -19,8 +19,8 @@
         <td>{{ $book->publisher }}</td>
         <td>{{ $book->cat_name }}</td>
         <td>{{ $book->flag_name }}</td>
-        <td><a href="deletebook/{{ $book->id }}"> Delete</td>
-        <td><a href="updatebook/{{ $book->id }}"> Update</td>
+        <td><a href="{{url('deletebook')}}/{{ $book->id }}"> Delete</td>
+        <td><a href="{{url('updatebook')}}/{{ $book->id }}"> Update</td>
     </tr>
     @endforeach
 </table>

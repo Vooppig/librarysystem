@@ -12,7 +12,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="bookhome">Library</a>
+  <a class="navbar-brand" href="{{url('bookhome')}}">Library</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -20,14 +20,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="bookhome">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{url('bookhome')}}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="listbook">All books</a>
+        <a class="nav-link" href="{{url('listbook')}}">All books</a>
       </li>
       </li>
       <li class="nav-item active">
-        <a class="nav-link disabled" href="insertbook">Add Books</a>
+        <a class="nav-link disabled" href="{{url('insertbook')}}">Add Books</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

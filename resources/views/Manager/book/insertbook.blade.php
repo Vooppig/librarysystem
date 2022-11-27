@@ -2,7 +2,7 @@
 @section('title', 'NUUR HUUDAS')
 
 @section('content')
-<form action="insertbook" method="post">
+<form action="{{url('insertbook')}}" method="post">
     {{ csrf_field() }}
     <table>
         <tr>
