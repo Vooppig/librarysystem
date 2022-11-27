@@ -6,11 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\book_cat;
 use App\Models\book_lib;
-<<<<<<< HEAD
 use App\Models\User;
-=======
 use App\Models\book_flag;
->>>>>>> 0dd6bb07fa81ebfbb8f4af2e0dc024944d477a2f
+use Illuminate\Support\Facades\Crypt;
 
 class bookController extends Controller
 {
@@ -109,10 +107,14 @@ class bookController extends Controller
     }
     function register(Request $request)
     {
-     return $request->input();
+     $user = new User;
+     $user->name = $request->input('name');
+     
     }
     function login(Request $request)
     {
-        return User::where('email',$request->input('email'))->get();
+        $user = User::where('email',$request->input('email'))->get();
+        return Crypt::decrypt($user[0]->password);
+
     }
 }
