@@ -3,27 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\DB;
 use App\Models\book_cat;
 use App\Models\book_lib;
 use App\Models\book_flag;
 
-class bookController extends Controller
+class Manager_Controller extends Controller
 {
     public function delete($id)
     {
-        $user_session=(new Session())->get('user');
-    if ($user_session['role']!= 3)
-    return redirect(url()->previous());
         book_lib::find($id)->delete();
+        
         return redirect("listbook");
     }
     public function index()
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
         //read all data
         $books = DB::select('select a.*,b.name as cat_name,c.name as flag_name,d.image
         from library_system_book as a 
@@ -31,22 +25,18 @@ class bookController extends Controller
         left join library_system_flags as c on a.flag = c.id
         left join library_system_images as d on d.book_id=a.id
         ;');
+
         return view('Manager.book.listbook', compact('books'));
     }
     public function  insert()
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
         $categories = book_cat::all();
         $flags = book_flag::all();
+
         return view('Manager.book.insertbook', ['categories' => $categories, 'flags' => $flags]);
     }
     public function do_insert(Request $request)
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
         //Form validation
         $validated = $request->validate([
             'isbn' => 'required',
@@ -54,6 +44,7 @@ class bookController extends Controller
             'author' => 'required|alpha',
             'image' => 'required'
         ]);
+
         $books = new book_lib;
         $books->title = $request->title;
         $books->isbn = $request->isbn;
@@ -73,21 +64,17 @@ class bookController extends Controller
     }
     public function search_forum()
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
         $categories = book_cat::all();
         $flags = book_flag::all();
+
         return view('Manager.book.search', ['categories' => $categories, 'flags' => $flags]);
     }
     public function search(Request $request)
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
         $categories = book_cat::all();
         $flags = book_flag::all();
         $query = book_lib::all();
+
         if (isset($request->title))
             $query->where('title', $request->title);
         if (isset($request->isbn))
@@ -100,28 +87,25 @@ class bookController extends Controller
             $query->where('publisher', $request->publisher);
         if (isset($request->category))
             $query->where('category', $request->category);
+
         return view('Manager.book.search', ['categories' => $categories, 'flags' => $flags, 'results' => $query]);
     }
     public function update_forum($id)
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
         $categories = book_cat::all();
         $flags = book_flag::all();
         $book = book_lib::find($id);
+
         return view('Manager.book.update', ['categories' => $categories, 'flags' => $flags, 'book' => $book]);
     }
     public function update(Request $request)
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
         $validated = $request->validate([
             'isbn' => 'required',
             'title' => 'required|max:30',
             'author' => 'required|alpha'
         ]);
+
         $book = book_lib::find($request->id);
         $book->title = $request->title;
         $book->isbn = $request->isbn;
@@ -131,6 +115,7 @@ class bookController extends Controller
         $book->flag = $request->flag;
         $book->price = $request->price;
         $book->save();
+
         return redirect("listbook");
     }
 }
