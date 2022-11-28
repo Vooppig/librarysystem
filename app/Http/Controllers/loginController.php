@@ -19,7 +19,7 @@ class loginController extends Controller
      $user->credit_card_num = $request->card_num;
      $user->reg_num = $request-> reg_num;
      $user->save();
-     return redirect('login')->with('message', 'Succesfully Registered!');
+     return redirect('listbook')->with('message', 'Succesfully Registered!');
      
 
     }

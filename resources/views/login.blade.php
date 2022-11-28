@@ -14,9 +14,6 @@
 <div class = "container">
 <form method="post" action="login">
     @csrf
-  @if(session('message'))
-  <div class="alert alert-success">{{session('message')}}</div>
-  @endif
   @yield('style')
   <div class="form-group">
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">

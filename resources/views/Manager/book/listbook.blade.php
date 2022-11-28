@@ -44,6 +44,9 @@
 @endsection
 @section('content')
 <h1>Номын жагсаалт</h1>
+@if(session('message'))
+  <div class="alert alert-success">{{session('message')}}</div>
+  @endif
 <div class="container">
     <div class="row">
         @foreach($books as $book)
