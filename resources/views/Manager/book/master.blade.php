@@ -12,34 +12,34 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="{{url('listbook')}}">Library</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="container">
+            <a class="navbar-brand" href="{{url('listbook')}}">Library</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url('listbook')}}">Бүх ном</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link disabled" href="{{url('insertbook')}}">Ном нэмэх</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link disabled" href="{{url('register')}}">Бүртгэх</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success my-2 mr-3 my-sm-0" type="submit">Search</button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url('listbook')}}">Бүх ном</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link disabled" href="{{url('insertbook')}}">Ном нэмэх</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link disabled" href="{{url('register')}}">Бүртгэх</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-success my-2 mr-3 my-sm-0" type="submit">Search</button>
                     <button class="btn btn-warning"> <a href="{{url('login')}}">Гарах</a></button>
-                    
-                
-            </form>
+                </form>
+            </div>
         </div>
     </nav>
 
-    <div>
+    <div class="container">
         @yield('content')
     </div>
 </body>
