@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\bookController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\member_bookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::get('/form', [ImageController::class, 'form']);
 Route::post('/upload', [ImageController::class, 'upload']);
 
 
-//book
+//manager.book
 Route::get('insertbook', [bookController::class, 'insert']);
 Route::post('insertbook', [bookController::class, 'do_insert']);
 Route::get('listbook', [bookController::class, 'index']);
@@ -37,3 +38,5 @@ Route::view('register','register');
 Route::post('register', [loginController::class, 'register']);
 Route::view('login','login');
 Route::post('login', [loginController::class, 'login']);
+//member.book
+Route::get('member_listbook', [member_bookController::class, 'index']);

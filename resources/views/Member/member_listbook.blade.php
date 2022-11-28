@@ -1,5 +1,4 @@
-
-@extends('Manager.book.master')
+@extends('Member.member_master')
 @section('title', 'Номын жагсаалт')
 @section('style')
 <style>
@@ -50,11 +49,6 @@
                 <p>Төрөл: {{ $book->cat_name }}</p>
                 <p>Төлөв: {{ $book->flag_name }}</p>
                 <p>Үнэ:{{$book->price}}</p>
-                <p>Хэвлэгч: {{ $book->publisher }}</p>
-                <p>
-                    <a href="{{url('deletebook')}}/{{ $book->id }}"> Устгах</a>
-                    <a href="{{url('updatebook')}}/{{ $book->id }}"> Засварлах</a>
-                </p>
             </div>
         </div>
         @endforeach

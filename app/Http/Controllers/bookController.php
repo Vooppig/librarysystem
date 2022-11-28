@@ -13,17 +13,17 @@ class bookController extends Controller
 {
     public function delete($id)
     {
-        $user_session=(new Session())->get('user');
-    if ($user_session['role']!= 3)
-    return redirect(url()->previous());
+        // $user_session = (new Session())->get('user');
+        // if ($user_session['role'] != 3)
+        //     return redirect(url()->previous());
         book_lib::find($id)->delete();
         return redirect("listbook");
     }
     public function index()
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
+    //     $user_session = (new Session())->get('user');
+    //     if ($user_session['role'] != 3)
+    //         return redirect(url()->previous());
         //read all data
         $books = DB::select('select a.*,b.name as cat_name,c.name as flag_name,d.image
         from library_system_book as a 
@@ -35,18 +35,18 @@ class bookController extends Controller
     }
     public function  insert()
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
+        // $user_session = (new Session())->get('user');
+        // if ($user_session['role'] != 3)
+        //     return redirect(url()->previous());
         $categories = book_cat::all();
         $flags = book_flag::all();
         return view('Manager.book.insertbook', ['categories' => $categories, 'flags' => $flags]);
     }
     public function do_insert(Request $request)
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
+        // $user_session = (new Session())->get('user');
+        // if ($user_session['role'] != 3)
+        //     return redirect(url()->previous());
         //Form validation
         $validated = $request->validate([
             'isbn' => 'required',
@@ -73,18 +73,18 @@ class bookController extends Controller
     }
     public function search_forum()
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
+        // $user_session = (new Session())->get('user');
+        // if ($user_session['role'] != 3)
+        //     return redirect(url()->previous());
         $categories = book_cat::all();
         $flags = book_flag::all();
         return view('Manager.book.search', ['categories' => $categories, 'flags' => $flags]);
     }
     public function search(Request $request)
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
+        // $user_session = (new Session())->get('user');
+        // if ($user_session['role'] != 3)
+        //     return redirect(url()->previous());
         $categories = book_cat::all();
         $flags = book_flag::all();
         $query = book_lib::all();
@@ -104,9 +104,9 @@ class bookController extends Controller
     }
     public function update_forum($id)
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
+        // $user_session = (new Session())->get('user');
+        // if ($user_session['role'] != 3)
+        //     return redirect(url()->previous());
         $categories = book_cat::all();
         $flags = book_flag::all();
         $book = book_lib::find($id);
@@ -114,9 +114,9 @@ class bookController extends Controller
     }
     public function update(Request $request)
     {
-        $user_session = (new Session())->get('user');
-        if ($user_session['role'] != 3)
-            return redirect(url()->previous());
+    //     $user_session = (new Session())->get('user');
+    //     if ($user_session['role'] != 3)
+    //         return redirect(url()->previous());
         $validated = $request->validate([
             'isbn' => 'required',
             'title' => 'required|max:30',

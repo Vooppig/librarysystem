@@ -22,9 +22,10 @@
             <td>
                 <select name="publisher" class="form-control">
                     <option value="">--Choose a publisher --</option>
-                    <option value="amazon">Amazon Printing</option>
-                    <option value="blue">Blue Printing</option>
+                    <option value="Amazon Printing">Amazon Printing</option>
+                    <option value="Blue">Blue Printing</option>
                     <option value="Strawberry">Strawberry Printing</option>
+                    <option value="Nepko">Nepko</option>
                 </select>
             </td>
         </tr>
