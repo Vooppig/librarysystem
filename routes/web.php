@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Manager_Controller;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\member_bookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,5 @@ Route::post('register', [loginController::class, 'register']);
 Route::view('login', 'login');
 Route::view('/', 'login');
 Route::post('login', [loginController::class, 'login']);
+//member.book
+Route::get('member_listbook', [member_bookController::class, 'index']);
