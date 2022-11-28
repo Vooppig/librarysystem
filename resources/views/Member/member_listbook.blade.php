@@ -49,6 +49,8 @@
                 <p>Төрөл: {{ $book->cat_name }}</p>
                 <p>Төлөв: {{ $book->flag_name }}</p>
                 <p>Үнэ:{{$book->price}}</p>
+                <button class="btn btn-warning"><a style="color:black"href="{{url('')}}">Түрэслэх</a></button>
+                <button class="btn btn-primary"><a style="color:black"href="{{url('')}}"> Худалдаж авах</a></button>
             </div>
         </div>
         @endforeach
