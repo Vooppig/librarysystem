@@ -1,3 +1,4 @@
+
 @extends('Manager.book.master')
 @section('title', 'Номын жагсаалт')
 @section('style')
@@ -37,7 +38,7 @@
 </style>
 @endsection
 @section('content')
-<h1>List of Book</h1>
+<h1>Номын жагсаалт</h1>
 <div class="container">
     <div class="row">
         @foreach($books as $book)
@@ -45,12 +46,10 @@
             <div class="card">
                 <img src="{{ asset('storage/images/'.$book->image) }}" alt="" width="150px" height="150px">
                 <h3>{{$book->title}}</h3>
-                <p>Author: {{ $book->author }}</p>
-                <p>Category: {{ $book->cat_name }}</p>
-                <p>As: {{ $book->flag_name }}</p>
+                <p>Зохиогч: {{ $book->author }}</p>
+                <p>Төрөл: {{ $book->cat_name }}</p>
+                <p>Төлөв: {{ $book->flag_name }}</p>
                 <p>
-                    <a href="{{url('updatebook')}}/{{ $book->id }}"> Update</a>
-                    <a href="{{url('deletebook')}}/{{ $book->id }}"> Delete</a>
                     <a href="{{url('deletebook')}}/{{ $book->id }}"> Устгах</a>
                     <a href="{{url('updatebook')}}/{{ $book->id }}"> Засварлах</a>
                 </p>

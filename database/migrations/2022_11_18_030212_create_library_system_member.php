@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\DB;
 return new class extends Migration
 {
     /**
@@ -25,6 +25,32 @@ return new class extends Migration
             $table->smallInteger('role')->references('id')->on('library_system_roles')->default(1);
             $table->timestamps();
         });
+        DB::table('library_system_member')->insert(
+            array(
+                'name' => 'Temuuder',
+                'email'=> 'narangereltemuuder@icloud.com',
+                'address'=> 'nalaikh',
+                'reg_num'=> 'UI99100258',
+                'phone_num' => '99196406',
+                'password' =>md5('manager123'),
+                'role'=> '3'
+
+            )
+            
+        );
+        DB::table('library_system_member')->insert(
+            array(
+                'name' => 'Nurmukhamet',
+                'email'=> 'nurkasultan25@gmail.com',
+                'address'=> 'nalaikh',
+                'reg_num'=> 'UD02250912',
+                'phone_num' => '89501512',
+                'password' =>md5('admin123'),
+                'role'=> '3'
+
+            )
+            
+        );
     }
 
     /**

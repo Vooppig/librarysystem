@@ -25,9 +25,6 @@ Route::post('/upload', [ImageController::class, 'upload']);
 
 
 //book
-Route::get('bookhome', function () {
-    return view('Manager.book.home');
-});
 Route::get('insertbook', [bookController::class, 'insert']);
 Route::post('insertbook', [bookController::class, 'do_insert']);
 Route::get('listbook', [bookController::class, 'index']);
@@ -37,6 +34,6 @@ Route::post('booksearch', [bookController::class, 'search']);
 Route::get('updatebook/{id}', [bookController::class, 'update_forum']);
 Route::post('updatebook', [bookController::class, 'update']);
 Route::view('register','register');
-Route::post('register', 'App\Http\Controllers\bookController@register');
+Route::post('register', [loginController::class, 'register']);
 Route::view('login','login');
 Route::post('login', [loginController::class, 'login']);

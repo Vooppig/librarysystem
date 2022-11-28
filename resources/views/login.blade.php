@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>Нэвтрэх</h1>
+<div class = "container">
 <form method="post" action="login">
     @csrf
   
@@ -14,4 +15,5 @@
   <button type="submit" class="btn btn-primary">Нэвтрэх</button>
   <button type="reset" class="btn btn-primary" value="Reset">Арилгах</button>
 </form>
+</div>
 @endsection
