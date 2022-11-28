@@ -38,6 +38,9 @@
 @endsection
 @section('content')
 <h1>Номын жагсаалт</h1>
+@if(session('message'))
+  <div class="alert alert-success">{{session('msg')}}</div>
+  @endif
 <div class="container">
     <div class="row">
         @foreach($books as $book)
@@ -49,8 +52,8 @@
                 <p>Төрөл: {{ $book->cat_name }}</p>
                 <p>Төлөв: {{ $book->flag_name }}</p>
                 <p>Үнэ:{{$book->price}}</p>
-                <button class="btn btn-warning"><a style="color:black"href="{{url('')}}">Түрэслэх</a></button>
-                <button class="btn btn-primary"><a style="color:black"href="{{url('')}}"> Худалдаж авах</a></button>
+                <button class="btn btn-warning"><a style="color:black"href="{{url('member_rent')}}">Түрэслэх</a></button>
+                <button class="btn btn-primary"><a style="color:black"href="{{url('member_rent')}}"> Худалдаж авах</a></button>
             </div>
         </div>
         @endforeach

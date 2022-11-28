@@ -24,7 +24,7 @@
                     <a class="nav-link" href="{{url('member_listbook')}}">Бүх ном</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link disabled" href="{{url('')}}">Ном захиалах ба түрээслэх</a>
+                    <a class="nav-link disabled" href="{{url('member_rent')}}">Ном захиалах ба түрээслэх</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link disabled" href="{{url('')}}">Захилагын түүх харах</a>

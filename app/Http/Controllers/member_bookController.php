@@ -5,6 +5,8 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
+
 class member_bookController extends Controller
 {
     public function index()
@@ -20,5 +22,10 @@ class member_bookController extends Controller
         left join library_system_images as d on d.book_id=a.id
         ;');
         return view('Member.member_listbook', compact('books'));
+        
+    }
+    public function rent()
+    {
+        return view('Member.member_rent');
     }
 }

@@ -33,4 +33,5 @@
         <button type="reset" class="btn btn-primary" value="Reset">Арилгах</button>
     </form>
 </div>
+
 @endsection
