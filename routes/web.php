@@ -1,11 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Manager_Controller;
 use App\Http\Controllers\loginController;
-use App\Mail\WelcomeMail;
-use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,26 +14,6 @@ use Illuminate\Support\Facades\Mail;
 | contains the "web" middleware group. Now   create something great!
 |
 */
-
-Route::get('send-mail', function () {
-   
-    $details = [
-        'title' => 'Mail from ItSolutionStuff.com',
-        'body' => 'This is for testing email using smtp'
-    ];
-   
-    Mail::to('se20d011@gmail.com')->send(new \App\Mail\MyTestMail($details));
-   
-    dd("Email is Sent.");
-});
-Route::get('mail',function(){
-    return new WelcomeMail();
-});
-Route::get('/', [ImageController::class, 'index']);
-
-Route::get('/form', [ImageController::class, 'form']);
-
-Route::post('/upload', [ImageController::class, 'upload']);
 
 
 //book
@@ -51,4 +28,5 @@ Route::post('updatebook', [Manager_Controller::class, 'update']);
 Route::view('register', 'register');
 Route::post('register', [loginController::class, 'register']);
 Route::view('login', 'login');
+Route::view('/', 'login');
 Route::post('login', [loginController::class, 'login']);

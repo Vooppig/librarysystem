@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\library_system_member;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeMail;
 
 class loginController extends Controller
 {
@@ -18,6 +20,8 @@ class loginController extends Controller
         $user->credit_card_num = $request->card_num;
         $user->reg_num = $request->reg_num;
         $user->save();
+
+        Mail::to($request->email)->send(new WelcomeMail());
     }
 
     public function login(Request $request)
