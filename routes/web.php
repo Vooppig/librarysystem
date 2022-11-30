@@ -31,7 +31,9 @@ Route::post('register', [loginController::class, 'register']);
 Route::view('login', 'login');
 Route::view('/', 'login');
 Route::post('login', [loginController::class, 'login']);
+Route::get('logout',[loginController::class, 'logout']);
 //member.book
 Route::get('member_listbook', [member_bookController::class, 'index']);
-Route::get('member_rent', [member_bookController::class, 'rent']);
-Route::get('logout',[loginController::class, 'logout']);
+Route::get('detail/{id}', [member_bookController::class, 'detail']);
+Route::get("member_orderdetail/", [member_bookController::class, 'orderdetail']);
+

@@ -23,9 +23,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{url('member_listbook')}}">Бүх ном</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link disabled" href="{{url('member_rent')}}">Ном захиалах ба түрээслэх</a>
-                </li>
+              
                 <li class="nav-item active">
                     <a class="nav-link disabled" href="{{url('')}}">Захилагын түүх харах</a>
                 </li>
@@ -37,15 +35,25 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-success my-2 mr-3 my-sm-0" type="submit">Search</button>
                     <button class="btn btn-warning"> <a href="{{url('logout')}}">Гарах</a></button>
-                    
-                
             </form>
         </div>
     </nav>
 
+
     <div class="container">
-        @yield('content')
+    @yield('content')
     </div>
+    <footer class="footer mt-auto">
+      <div class="container pt-5 pb-4">
+        <div class="row">
+          <div class="col-sm-12 col-md-2"></div>
+          <div class="col-sm-4 col-md-3 mb-3 media">
+            <i class="fa-solid fa-location-dot align-self-start"></i> 
+            
+      <div class="copyright text-center">
+        &copy; 2022 НОМЫН САН
+      </div>
+    </footer>
 </body>
 
 </html>
