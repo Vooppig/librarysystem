@@ -34,3 +34,4 @@ Route::post('login', [loginController::class, 'login']);
 //member.book
 Route::get('member_listbook', [member_bookController::class, 'index']);
 Route::get('member_rent', [member_bookController::class, 'rent']);
+Route::get('logout',[loginController::class, 'logout']);

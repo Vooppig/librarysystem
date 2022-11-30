@@ -4,5 +4,7 @@
 @endsection
 @section('content')
 <h1>Ном Түрээслэх</h1>
-  @endif
+@if(isset($response))
+<div class="alert alert-success">{{$response}}</div>
+@endif
 @endsection

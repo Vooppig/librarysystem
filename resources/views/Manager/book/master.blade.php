@@ -33,7 +33,7 @@
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-success my-2 mr-3 my-sm-0" type="submit">Search</button>
-                    <button class="btn btn-warning"> <a href="{{url('login')}}">Гарах</a></button>
+                    <button class="btn btn-warning"> <a href="{{url('logout')}}">Гарах</a></button>
                 </form>
             </div>
         </div>
