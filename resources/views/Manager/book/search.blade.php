@@ -5,23 +5,19 @@
     <div>
         <table>
             {{ csrf_field() }}
-            <tr>
-                <td>Title</td>
-                <td><input type="text" name="title" id=""></td>
-            </tr>
-            <tr>
-                <td>Author</td>
-                <td><input type="text" name="author" id=""></td>
-            </tr>
-            <tr>
-                <td>flag</td>
-                <td>
-                    <select name="flag" id="flag">
-                        @foreach($flags as $flag)
-                        <option value="{{$flag->id}}"> {{ $flag->name}}</option>
-                        @endforeach
-                    </select>
-                </td>
+            <select name="search_type" id="">
+                <option value="title">Title</option>
+                <option value="author">Author</option>
+                <option value="isbn">ISBN</option>
+            </select>
+            <td>flag</td>
+            <td>
+                <select name="flag" id="flag">
+                    @foreach($flags as $flag)
+                    <option value="{{$flag->id}}"> {{ $flag->name}}</option>
+                    @endforeach
+                </select>
+            </td>
             </tr>
             <tr>
                 <td>Category</td>
