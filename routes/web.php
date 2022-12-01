@@ -35,5 +35,5 @@ Route::get('logout',[loginController::class, 'logout']);
 //member.book
 Route::get('member_listbook', [member_bookController::class, 'index']);
 Route::get('detail/{id}', [member_bookController::class, 'detail']);
-Route::get("member_orderdetail/", [member_bookController::class, 'orderdetail']);
+Route::get('member_orderdetail/{id}', [member_bookController::class, 'orderdetail']);
 
