@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\library_system_member;
 use Illuminate\Support\Facades\Mail;
+use App\Models\library_system_member;
+use App\Models\book_account;
 use App\Mail\WelcomeMail;
 
 session_start();
@@ -22,6 +23,10 @@ class loginController extends Controller
         $user->credit_card_num = $request->card_num;
         $user->reg_num = $request->reg_num;
         $user->save();
+
+        $acc = new book_account();
+        $acc->card_num = $request->card_num;
+        $acc->save();
 
         Mail::to($request->email)->send(new WelcomeMail());
         return redirect('listbook')->with('message', 'Амжилттай бүртгэгдлээ!');
