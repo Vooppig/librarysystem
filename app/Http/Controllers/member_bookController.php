@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\DB;
-
-
+use App\Models\book_reserved;
+use Illuminate\Http\Request;
 
 class member_bookController extends Controller
 {
@@ -42,6 +41,12 @@ class member_bookController extends Controller
         ;');
     return view('Member.member_orderdetail',['books'=>$books]);
     
+    }
+    public function member_account(Request $request)
+    {
+        
+        return view('Member.member_account');
+        book_reserved::find();
     }
 
 };

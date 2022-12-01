@@ -24,13 +24,14 @@
 </table>
 <div>
   <form>
-    <div class="mb-3">
-      <label class="form-label">Төлбөрийн нөхцөл:</label>
-      <input type="radio" name="payment"><span>Интэрнэт банк</span>
-      <input type="radio" name="payment"><span>Банкны карт</span>
-      <input type="radio" name="payment"><span>Payment On Delivery</span>
+    <form action="orderplace" method="post">
+    <div class="form-group">
+      <label for="pwd">Төлбөрийн нөхцөл:</label>
+      <input type="radio" value="cash" name="payment"><span>Интэрнэт банк</span>
+      <input type="radio" value="cash" name="payment"><span>Банкны карт</span>
+      <input type="radio" value="cash" name="payment"><span>Payment On Delivery</span>
     </div>
-    <button class="btn btn-primary"><a href="{{url('member_listbook')}}"style="color:inherit;text-decoration:none">Захиалах</button>
+    <button class="btn btn-primary"><a href="{{url('member_account')}}"style="color:inherit;text-decoration:none">Захиалах</button>
   </form>
 </div>
 @endforeach
