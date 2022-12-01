@@ -31,16 +31,16 @@ class member_bookController extends Controller
         ;');
         return view('Member.member_detail', ['books' => $books]);
     }
-    function orderdetail()
+    function orderdetail($id)
     {
         $books = DB::select('select a.*,b.name as cat_name,c.name as flag_name,d.image
         from library_system_book as a 
         left join library_system_book_cat as b on a.category = b.id
         left join library_system_flags as c on a.flag = c.id
         left join library_system_images as d on d.book_id=a.id
-        
+        where a.id='.$id.'
         ;');
-    return view('member.member_orderdetail',['books'=>$books]);
+    return view('Member.member_orderdetail',['books'=>$books]);
     
     }
 
