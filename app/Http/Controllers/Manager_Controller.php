@@ -123,6 +123,7 @@ class Manager_Controller extends Controller
         $book->category = $request->category;
         $book->flag = $request->flag;
         $book->price = $request->price;
+        $book->detail = $request->detail;
         $book->save();
 
         return redirect("listbook");

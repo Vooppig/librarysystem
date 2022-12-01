@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class book_lib extends Model
 {
     use HasFactory;
-    protected $table ="library_system_book";
+    protected $table = "library_system_book";
     protected $primaryKey = "id";
+    protected $fillable = ['title', 'author', 'flag', 'publisher', 'isbn', 'price'];
 }
