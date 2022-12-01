@@ -7,29 +7,33 @@ use Illuminate\Support\Facades\DB;
 use App\Models\book_cat;
 use App\Models\book_lib;
 use App\Models\book_flag;
+use App\Models\book_view;
 
+session_start();
 class Manager_Controller extends Controller
 {
+    private function logedin()
+    {
+        if ($_SESSION["user"]['role'] != 3)
+            return redirect('/');
+    }
     public function delete($id)
     {
+        $this->logedin();
         book_lib::find($id)->delete();
-        
+
         return redirect("listbook");
     }
     public function index()
     {
+        $this->logedin();
         //read all data
-        $books = DB::select('select a.*,b.name as cat_name,c.name as flag_name,d.image
-        from library_system_book as a 
-        left join library_system_book_cat as b on a.category = b.id
-        left join library_system_flags as c on a.flag = c.id
-        left join library_system_images as d on d.book_id=a.id
-        ;');
-
+        $books = book_view::all();
         return view('Manager.book.listbook', compact('books'));
     }
     public function  insert()
     {
+        $this->logedin();
         $categories = book_cat::all();
         $flags = book_flag::all();
 
@@ -37,6 +41,7 @@ class Manager_Controller extends Controller
     }
     public function do_insert(Request $request)
     {
+        $this->logedin();
         //Form validation
         $validated = $request->validate([
             'isbn' => 'required',
@@ -64,6 +69,7 @@ class Manager_Controller extends Controller
     }
     public function search_forum()
     {
+        $this->logedin();
         $categories = book_cat::all();
         $flags = book_flag::all();
 
@@ -71,6 +77,7 @@ class Manager_Controller extends Controller
     }
     public function search(Request $request)
     {
+        $this->logedin();
         $categories = book_cat::all();
         $flags = book_flag::all();
         $query = book_lib::all();
@@ -92,6 +99,7 @@ class Manager_Controller extends Controller
     }
     public function update_forum($id)
     {
+        $this->logedin();
         $categories = book_cat::all();
         $flags = book_flag::all();
         $book = book_lib::find($id);
@@ -100,6 +108,7 @@ class Manager_Controller extends Controller
     }
     public function update(Request $request)
     {
+        $this->logedin();
         $validated = $request->validate([
             'isbn' => 'required',
             'title' => 'required|max:30',
@@ -114,6 +123,7 @@ class Manager_Controller extends Controller
         $book->category = $request->category;
         $book->flag = $request->flag;
         $book->price = $request->price;
+        $book->detail = $request->detail;
         $book->save();
 
         return redirect("listbook");

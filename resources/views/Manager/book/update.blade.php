@@ -23,9 +23,10 @@
             <td>
                 <select name="publisher">
                     <option value="">--Choose a publisher --</option>
-                    <option value="amazon">Amazon Printing</option>
-                    <option value="blue">Blue Printing</option>
+                    <option value="Amazon Printing">Amazon Printing</option>
+                    <option value="Blue">Blue Printing</option>
                     <option value="Strawberry">Strawberry Printing</option>
+                    <option value="Nepko">Nepko</option>
                 </select>
             </td>
         </tr>
@@ -53,6 +54,12 @@
         <tr>
             <td>Price</td>
             <td><input type="number" name="price" value="{{$book->price}}"></td>
+        </tr>
+        <tr>
+            <td>Detail</td>
+            <td>
+                <textarea name="detail" rows="4" cols="auto"></textarea>
+            </td>
         </tr>
     </table>
     <input type="submit" value="Save">
