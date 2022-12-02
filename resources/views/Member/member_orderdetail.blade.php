@@ -23,15 +23,18 @@
   </tbody>
 </table>
 <div>
-  <form>
-    <form action="orderplace" method="post">
+    <form action="/orderplace" method="post">
+    @csrf
     <div class="form-group">
-      <label for="pwd">Төлбөрийн нөхцөл:</label>
-      <input type="radio" value="cash" name="payment"><span>Интэрнэт банк</span>
-      <input type="radio" value="cash" name="payment"><span>Банкны карт</span>
-      <input type="radio" value="cash" name="payment"><span>Payment On Delivery</span>
+      <textarea name="address" placeholder="Хүргэх хаяг оруулна уу" class="form-control"></textarea>
     </div>
-    <button class="btn btn-primary"><a href="{{url('member_account')}}"style="color:inherit;text-decoration:none">Захиалах</button>
+    <div class="form-group">
+      <label for="pwd">Төлбөрийн нөхцөл:</label><br> <br>
+      <input type="radio" value="cash" name="payment"><span>Интэрнэт банк</span> <br> <br>
+      <input type="radio" value="cash" name="payment"><span>Банкны карт</span> <br><br>
+      <input type="radio" value="cash" name="payment"><span>Payment On Delivery</span><br> <br>
+    </div>
+    <button class="btn btn-primary">Захиалах</button>
   </form>
 </div>
 @endforeach

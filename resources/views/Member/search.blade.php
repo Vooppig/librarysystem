@@ -1,9 +1,9 @@
-@extends('Manager.book.master')
+@extends('Member.member_master')
 @section('title', 'NUUR HUUDAS')
 @section('content')
 <form action="{{url('booksearch')}}" method="post">
     <div>
-        <table>
+        <table> 
             {{ csrf_field() }}
             <select name="search_type" id="">
                 <option value="title">Title</option>

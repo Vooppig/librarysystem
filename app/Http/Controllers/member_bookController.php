@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 use App\Models\book_reserved;
 use Illuminate\Http\Request;
@@ -36,11 +37,13 @@ class member_bookController extends Controller
         $books = $books->where('id', $id);
         return view('Member.member_orderdetail', ['books' => $books]);
     }
-    public function member_account(Request $request)
+    function search(Request $request)
     {
-        
-        return view('Member.member_account');
-        book_reserved::find();
+        $books = book_view::where('title','like', '%'.  $request->input('query'). '%')->orWhere('isbn','like','%'. $request->input('query').'%')->orWhere('author','like','%'. $request->input('query').'%')->orWhere('detail','like','%'. $request->input('query').'%')->get();
+        return view('Member.member_listbook',compact('books'));
     }
-
+    function orderPlace(Request $request)
+    {
+        return $request->input();
+    }
 };

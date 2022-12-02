@@ -77,25 +77,9 @@ class Manager_Controller extends Controller
     }
     public function search(Request $request)
     {
-        $this->logedin();
-        $categories = book_cat::all();
-        $flags = book_flag::all();
-        $query = book_lib::all();
-
-        if (isset($request->title))
-            $query->where('title', $request->title);
-        if (isset($request->isbn))
-            $query->where('ISBN', $request->isbn);
-        if (isset($request->author))
-            $query->where('author', $request->author);
-        if (isset($request->flag))
-            $query->where('flag', $request->flag);
-        if (isset($request->publisher))
-            $query->where('publisher', $request->publisher);
-        if (isset($request->category))
-            $query->where('category', $request->category);
-
-        return view('Manager.book.search', ['categories' => $categories, 'flags' => $flags, 'results' => $query]);
+        
+        $books = book_view::where('title','like', '%'.  $request->input('query'). '%')->orWhere('isbn','like','%'. $request->input('query').'%')->orWhere('author','like','%'. $request->input('query').'%')->orWhere('detail','like','%'. $request->input('query').'%')->get();
+        return view('Manager.book.listbook',compact('books'));
     }
     public function update_forum($id)
     {

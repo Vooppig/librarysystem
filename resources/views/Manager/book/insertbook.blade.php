@@ -62,7 +62,7 @@
                 </td>
             </tr>
         </table>
-        <input type="submit" value="Insert">
+        <td><input type="submit" value="Ном нэмэх"></td>
         @if (count($errors)>0)
         @foreach($errors->all() as $error)
         <li>{{$error}}</li>
