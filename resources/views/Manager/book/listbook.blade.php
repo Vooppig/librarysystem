@@ -39,18 +39,20 @@
             display: block;
             margin-bottom: 20px;
         }
-         .detail-img{
-        height: 200px;
-        } 
+
+        .detail-img {
+            height: 200px;
+        }
     }
 </style>
 @endsection
 @section('content')
 <h1>Номын жагсаалт</h1>
 @if(session('message'))
-  <div class="alert alert-success">{{session('message')}}</div>
-  @endif
+<div class="alert alert-success">{{session('message')}}</div>
+@endif
 <div class="container">
+    <input type="hidden" name="" value="{{$_SESSION['user']['id']}}">
     <div class="row">
         @foreach($books as $book)
         <div class="card">
@@ -59,8 +61,8 @@
             <p>Зохиогч: {{ $book->author }}</p>
             <p>Төрөл: {{ $book->cat_name }}</p>
             <p>Төлөв: {{ $book->flag_name }}</p>
-                <p>Үнэ:{{$book->price}}</p>
-                <p>Хэвлэгч: {{ $book->publisher }}</p>
+            <p>Үнэ:{{$book->price}}</p>
+            <p>Хэвлэгч: {{ $book->publisher }}</p>
             <p>
                 <a href="{{url('deletebook')}}/{{ $book->id }}"> Устгах</a>
                 <a href="{{url('updatebook')}}/{{ $book->id }}"> Засварлах</a>

@@ -34,7 +34,6 @@
                 <td>Publisher</td>
                 <td>
                     <select name="publisher">
-                        <option value="">--Choose a publisher --</option>
                         <option value="amazon">Amazon Printing</option>
                         <option value="blue">Blue Printing</option>
                         <option value="Strawberry">Strawberry Printing</option>

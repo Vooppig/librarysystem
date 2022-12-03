@@ -28,7 +28,7 @@ return new class extends Migration
         DB::table('library_system_status')->insert(
             array(
                 'id' => '2',
-                'name' => 'Захиалсан'
+                'name' => 'Хүлээгдэж байгаа'
             )
         );
     }

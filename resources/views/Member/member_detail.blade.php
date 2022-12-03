@@ -20,7 +20,7 @@
                 <div class="position-absolute top-0 start-0 translate-middle">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, magnam doloremque. Vitae nesciunt porro laboriosam iure, ipsa laudantium recusandae obcaecati reprehenderit sunt omnis quia rerum ipsam impedit tenetur alias molestiae.</p>
                     <button class="btn btn-primary"><a style="color:black" href="{{url('member_orderdetail')}}/{{$book->id}}">Түрэслэх</a></button>
-                    <button class="btn btn-primary"><a style="color:black" href="{{url('member_orderdetail')}}/{{$book->id}}"> Худалдаж авах</a></button>
+                    <button class="btn btn-primary"><a style="color:black" href="{{url('member_orderbuydetail')}}/{{$book->id}}"> Худалдаж авах</a></button>
                 </div>
             </div>
         </div>

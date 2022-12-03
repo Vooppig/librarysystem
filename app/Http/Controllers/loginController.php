@@ -29,14 +29,14 @@ class loginController extends Controller
         $acc->save();
 
         Mail::to($request->email)->send(new WelcomeMail());
-        return redirect('listbook')->with('message', 'Амжилттай бүртгэгдлээ!');
+        return redirect('listbook')->with('message', 'Амжилттай бүртгэгдлээ!'); 
     }
 
     public function login(Request $request)
     {
         $user = library_system_member::where('email', $request->input('email'))->first();
         if ($user->password == md5($request->password)) {
-            $_SESSION["user"] = ['name' => $user->name, 'mail' => $user->email, 'role' => $user->role];
+            $_SESSION["user"] = ['name' => $user->name, 'mail' => $user->email, 'role' => $user->role, 'id' => $user->id];
             if ($user->role == 3)
                 return redirect('listbook');
             if ($user->role == 2)

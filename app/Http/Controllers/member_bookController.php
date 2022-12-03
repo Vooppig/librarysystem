@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use App\Models\book_reserved;
+use App\Models\book_reservation;
+use App\Models\book_sale;
 use Illuminate\Http\Request;
 use App\Models\book_view;
 
@@ -34,16 +35,41 @@ class member_bookController extends Controller
     {
         $this->logedin();
         $books = book_view::all();
-        $books = $books->where('id', $id);
-        return view('Member.member_orderdetail', ['books' => $books]);
+        $books = $books->where('id', $id)->first();
+        $books->price = $books->price * 0.3;
+        return view('Member.member_orderdetail', ['tul' => "Ном Түрээслэх"], ['books' => $books], ['type' => 0]);
+    }
+    function orderbuydetail($id)
+    {
+        $this->logedin();
+        $books = book_view::all();
+        $books = $books->where('id', $id)->first();
+        return view('Member.member_orderdetail', ['tul' => "Худалдаж авах"], ['books' => $books], ['type' => 1]);
     }
     function search(Request $request)
     {
-        $books = book_view::where('title','like', '%'.  $request->input('query'). '%')->orWhere('isbn','like','%'. $request->input('query').'%')->orWhere('author','like','%'. $request->input('query').'%')->orWhere('detail','like','%'. $request->input('query').'%')->get();
-        return view('Member.member_listbook',compact('books'));
+        $books = book_view::where('title', 'like', '%' .  $request->input('query') . '%')->orWhere('isbn', 'like', '%' . $request->input('query') . '%')->orWhere('author', 'like', '%' . $request->input('query') . '%')->orWhere('detail', 'like', '%' . $request->input('query') . '%')->get();
+        return view('Member.member_listbook', compact('books'));
     }
-    function orderPlace(Request $request)
+    public function place_order(Request $req)
     {
-        return $request->input();
+        if ($req->type == 1) {
+            $res = new book_reservation();
+            $res->created_by = $_SESSION['user']['role'];
+            $res->book_id = $req->input('id');
+            $res->save();
+
+            return redirect(url('member_listbook'));
+        }
+        if ($req->type == 0) {
+            $res = new book_sale();
+            $res->created_by = $_SESSION['user']['id'];
+            $res->book_id = $req->input('id');
+            $res->address = $req->address;
+            $res->save();
+
+            return redirect(url('member_listbook'));
+        }
+        return redirect('/');
     }
 };

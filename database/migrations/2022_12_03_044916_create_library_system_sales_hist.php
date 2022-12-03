@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -12,19 +12,19 @@ return new class extends Migration
      *
      * @return void
      */
+    /*
+    Зарагдсан номний түүх энд хадгалагдан
+    */
     public function up()
     {
-        /*
-        Ном түрээслэхэд түүх нь энд хадгалагдана
-        */
-        Schema::create('library_system_reservation', function (Blueprint $table) {
+        Schema::create('library_system_sales_hist', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('created_by');
             $table->integer('status')->default(2);
+            $table->string('address')->nullable();
             $table->bigInteger('book_id')->references('id')->on('library_system_book');
-            $table->date('reserve_date')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->datetime('reserve_datetime')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->date('end_date')->default(DB::raw('ADDDATE(CURRENT_TIMESTAMP, INTERVAl "7" DAY)'));
+            $table->date('selled_date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->datetime('selled_datetime')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('library_system_reservation');
+        Schema::dropIfExists('library_system_sales_hist');
     }
 };
