@@ -51,10 +51,7 @@
 @section('content')
 <h1>Номын жагсаалт</h1>
 @if(session('message'))
-<div class="alert alert-success">{{session('msg')}}</div>
-@if(session($response))
-<div class="alert alert-success">{{session('$response')}}</div>
-@endif
+<div class="alert alert-success">{{session('message')}}</div>
 @endif
 <div class="container">
     <div class="row">
