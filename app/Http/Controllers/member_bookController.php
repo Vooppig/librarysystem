@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bank_account;
 use Illuminate\Support\Facades\DB;
 use App\Models\book_reservation;
 use App\Models\book_sale;
 use Illuminate\Http\Request;
 use App\Models\book_view;
-
+use App\Models\member;
 
 session_start();
 
@@ -53,11 +54,17 @@ class member_bookController extends Controller
     }
     public function place_order(Request $req)
     {
-        if ($req->type == 1) {
-            $res = new book_reservation();
-            $res->created_by = $_SESSION['user']['role'];
-            $res->book_id = $req->input('id');
-            $res->save();
+        $card_num = member::find($_SESSION['user']['id'])->credit_card_num;
+        $bank_account = bank_account::where('card_num', $card_num)->first();
+        if ($bank_account->amount - $req->price > 0) {
+            $bank_account->amount = $bank_account->amount - $req->price;
+            $bank_account->save();
+            if ($req->type == 1) {
+                $res = new book_reservation();
+                $res->created_by = $_SESSION['user']['role'];
+                $res->book_id = $req->input('id');
+                $res->save();
+            }
 
             return redirect(url('member_listbook'))->with('message', 'Таны захиалгийг хүлээн авлаа!'); 
         }
@@ -70,7 +77,7 @@ class member_bookController extends Controller
 
             return redirect(url('member_listbook'))->with('message', 'Таны захиалгийг хүлээн авлаа !'); 
         }
-        return redirect('/');
+        return redirect()->back()->with('message', 'Үлдэгдэл хүрэлцэхгүй байна!!!');
     }
     public function myOrders()
     {
