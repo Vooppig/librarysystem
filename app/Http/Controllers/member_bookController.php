@@ -64,19 +64,24 @@ class member_bookController extends Controller
                 $res->created_by = $_SESSION['user']['role'];
                 $res->book_id = $req->input('id');
                 $res->save();
-
-                return redirect(url('member_listbook'));
             }
-            if ($req->type == 0) {
-                $res = new book_sale();
-                $res->created_by = $_SESSION['user']['id'];
-                $res->book_id = $req->input('id');
-                $res->address = $req->address;
-                $res->save();
 
-                return redirect(url('member_listbook'));
-            }
+            return redirect(url('member_listbook'))->with('message', 'Таны захиалгийг хүлээн авлаа!'); 
+        }
+        if ($req->type == 0) {
+            $res = new book_sale();
+            $res->created_by = $_SESSION['user']['id'];
+            $res->book_id = $req->input('id');
+            $res->address = $req->address;
+            $res->save();
+
+            return redirect(url('member_listbook'))->with('message', 'Таны захиалгийг хүлээн авлаа !'); 
         }
         return redirect()->back()->with('message', 'Үлдэгдэл хүрэлцэхгүй байна!!!');
+    }
+    public function myOrders()
+    {
+       $res =  book_reservation::where('created_by', $_SESSION['user']['id'])->orderby('reserve_datetime')->get();
+       return view('Member.member_myorders',['books'=>$res]);
     }
 };
