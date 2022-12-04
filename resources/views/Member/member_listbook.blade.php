@@ -65,7 +65,6 @@
                     <p style="font-size:80%"> Төрөл: {{ $book->cat_name }}</p>
                     <p style="font-size:80%">Төлөв: {{ $book->flag_name }}</p>
                     <p>Үнэ:₮{{$book->price}}</p>
-
             </div>
         </div>
         @endforeach
