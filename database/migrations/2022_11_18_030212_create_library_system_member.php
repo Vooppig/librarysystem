@@ -50,7 +50,17 @@ return new class extends Migration
                 'role' => '3'
 
             )
-
+        );
+        DB::table('library_system_member')->insert(
+            array(
+                'name' => 'Nurmukhamet',
+                'email' => 'nurka.the.lazy@gmail.com',
+                'address' => 'nalaikh',
+                'reg_num' => 'UD02250812',
+                'phone_num' => '89401512',
+                'password' => md5('cashier123'),
+                'role' => '2'
+            )
         );
     }
 

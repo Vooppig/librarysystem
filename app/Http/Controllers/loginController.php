@@ -29,7 +29,7 @@ class loginController extends Controller
         $acc->save();
 
         Mail::to($request->email)->send(new WelcomeMail());
-        return redirect('listbook')->with('message', 'Амжилттай бүртгэгдлээ!'); 
+        return redirect('listbook')->with('message', 'Амжилттай бүртгэгдлээ!');
     }
 
     public function login(Request $request)
@@ -40,7 +40,7 @@ class loginController extends Controller
             if ($user->role == 3)
                 return redirect('listbook');
             if ($user->role == 2)
-                return redirect('listbook');
+                return redirect('cashier_listbook');
             if ($user->role == 1)
                 return redirect('member_listbook');
         }
@@ -50,5 +50,5 @@ class loginController extends Controller
     {
         session_destroy();
         return redirect('login');
-    }   
+    }
 }
