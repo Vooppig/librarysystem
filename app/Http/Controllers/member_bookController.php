@@ -69,7 +69,7 @@ class member_bookController extends Controller
                 $res->save();
             }
 
-            return redirect(url('member_listbook'))->with('message', 'Таны захиалагийг хүлээн авлаа!'); 
+            return redirect(url('member_listbook'))->with('message', 'Таны захиалагийг хүлээн авлаа!');
         }
         if ($req->type == 0) {
             $res = new book_sale();
@@ -78,14 +78,13 @@ class member_bookController extends Controller
             $res->address = $req->address;
             $res->save();
 
-            return redirect(url('member_listbook'))->with('message', 'Таны захиалагийг хүлээн авлаа !'); 
+            return redirect(url('member_listbook'))->with('message', 'Таны захиалагийг хүлээн авлаа !');
         }
         return redirect()->back()->with('message', 'Үлдэгдэл хүрэлцэхгүй байна!!!');
     }
     public function myOrders()
     {
         $res =  library_system_res_view::where('created_by', $_SESSION['user']['id'])->get();
-
         return view('Member.member_myorders', ['books' => $res]);
         //  return $res;
     }
