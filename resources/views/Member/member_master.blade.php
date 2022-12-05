@@ -29,7 +29,7 @@
                     <a class="nav-link disabled" href="{{url('member_myorders')}}">Захилагын түүх харах</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link disabled" href="{{url('')}}">Данс</a>
+                    <a class="nav-link disabled" href="{{url('member_account')}}">Данс</a>
                 </li>
             </ul>
             <form action="/search" class="form-inline my-2 my-lg-0">

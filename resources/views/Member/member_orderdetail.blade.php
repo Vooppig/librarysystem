@@ -2,9 +2,6 @@
 @section('title', 'Ном захиалга')
 @section('content')
 <h1>{{ $tul }}</h1>
-@if(session('message'))
-<div class="alert alert-danger">{{session('message')}}</div>
-@endif
 <table class="table">
   <tbody>
     <tr>
@@ -25,7 +22,7 @@
   </tbody>
 </table>
 <div>
-  <form action="/orderplace" method="post">
+  <form action="member_listbook" method="post">
     @csrf
     <div class="form-group">
       @if($tul == "Ном Түрээслэх")
@@ -34,7 +31,6 @@
       <input type="hidden" name="type" value="0">
       @endif
       <input type="hidden" name="id" value="{{ $books->id }}">
-      <input type="hidden" name="price" value="{{$books->price}}">
       <textarea name="address" placeholder="Хүргэх хаяг оруулна уу" class="form-control"></textarea>
     </div>
     <div class="form-group">
@@ -48,6 +44,3 @@
 </div>
 
 @endsection
-<!-- @if(isset($response))
-<div class="alert alert-success">{{$response}}</div>
-@endif -->

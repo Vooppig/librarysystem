@@ -11,10 +11,9 @@
       <td><img src="{{ asset('storage/images/'.$book->image) }}" alt="" width="150px" height="150px"></td>
       <td>Үнэ</td>
       <td>₮{{$book->price}}</td>
-      <td>Нэр</td>
       <td></td>
-      <td>Зохиолч</td>
-      <td>{{ $book->author }}</td>
+      <td></td>
+      <td></td>
     </tr>
     @endforeach
   </tbody>
