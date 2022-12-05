@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\cashier_controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Manager_Controller;
 use App\Http\Controllers\loginController;
@@ -42,4 +43,8 @@ Route::get("member_orderbuydetail/{id}", [member_bookController::class, 'orderbu
 Route::get('search', [member_bookController::class, 'search']);
 Route::post('orderplace', [member_bookController::class, 'place_order']);
 Route::get('member_myorders', [member_bookController::class, 'myOrders']);
-Route::get('member_account',[member_bookController::class,'account']);
+Route::get('member_account', [member_bookController::class, 'account']);
+
+
+//cashier.book
+Route::get('cashier_listbook', [cashier_controller::class, 'index']);
