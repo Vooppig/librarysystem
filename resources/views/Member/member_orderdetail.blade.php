@@ -25,11 +25,7 @@
   <form action="/orderplace" method="post">
     @csrf
     <div class="form-group">
-      @if($tul == "Ном Түрээслэх")
-      <input type="hidden" name="type" value="1">
-      @else
-      <input type="hidden" name="type" value="0">
-      @endif
+      <input type="hidden" name="type" value="{{$type}}">
       <input type="hidden" name="id" value="{{ $books->id }}">
       <textarea name="address" placeholder="Хүргэх хаяг оруулна уу" class="form-control"></textarea>
     </div>

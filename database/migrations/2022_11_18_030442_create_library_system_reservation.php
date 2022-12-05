@@ -20,8 +20,9 @@ return new class extends Migration
         Schema::create('library_system_reservation', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('created_by');
-            $table->integer('type');
+            $table->string('type');
             $table->integer('status')->default(2);
+            $table->string('address')->nullable();
             $table->bigInteger('book_id')->references('id')->on('library_system_book');
             $table->date('reserve_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->datetime('reserve_datetime')->default(DB::raw('CURRENT_TIMESTAMP'));

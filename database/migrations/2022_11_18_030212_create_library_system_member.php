@@ -62,6 +62,18 @@ return new class extends Migration
                 'role' => '2'
             )
         );
+        DB::table('library_system_member')->insert(
+            array(
+                'name' => 'Temuuder',
+                'email' => 'temuudern@gmail.com',
+                'address' => 'jukov',
+                'reg_num' => 'UI00100258',
+                'phone_num' => '99117331',
+                'password' => md5('123'),
+                'credit_card_num' => 100100100,
+                'role' => '1'
+            )
+        );
     }
 
     /**
