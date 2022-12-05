@@ -25,6 +25,8 @@ return new class extends Migration
             $table->date('reserve_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->datetime('reserve_datetime')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->date('end_date')->default(DB::raw('ADDDATE(CURRENT_TIMESTAMP, INTERVAl "7" DAY)'));
+            $table->integer('returned')->default(1);
+            $table->bigInteger('fine')->default(0);
             $table->timestamps();
         });
     }
