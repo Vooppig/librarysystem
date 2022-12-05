@@ -9,6 +9,7 @@
     body {
         font-family: Arial, Helvetica, sans-serif;
         background-color: white;
+        margin: 0;
     }
 
     .column {
@@ -28,12 +29,13 @@
     }
 
     .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2);
         margin: 6px;
-        padding: 6px;
+        padding: 20px;
         text-align: center;
-        background-color: #86abe3ff;
+        background-color: white;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-radius: 20px;
 
 
     }
@@ -59,7 +61,7 @@
         <div class="row">
             <div class="card">
                 <a style="color:inherit;text-decoration:none" href="detail/{{$book->id}}">
-                    <img src="{{ asset('storage/images/'.$book->image) }}" alt="" width="150px" height="150px">
+                    <img src="{{ asset('storage/images/'.$book->image) }}" alt="" width="200px" height="200px">
                     <h3 style="font-size:100%">{{$book->title}}</h3>
                     <p style="font-size:100%">Зохиогч: {{ $book->author }}</p>
                     <p style="font-size:80%"> Төрөл: {{ $book->cat_name }}</p>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,11 +10,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     @yield('style')
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-        <a class="navbar-brand" href="{{url('member_listbook')}}">Library</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   
+        <a class="navbar-brand" href="{{url('member_listbook')}}">Temuuder&Nurka Номын дэлгүүр</a>
+        <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,8 +34,8 @@
             </ul>
             <form action="/search" class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success my-2 mr-3 my-sm-0" type="submit">Search</button>
-                    <button class="btn btn-warning"> <a href="{{url('logout')}}">Гарах</a></button>
+                <button class="btn btn-outline-secondary my-2 mr-3 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-outline-secondary"> <a style="color:inherit;text-decoration:none" href="{{url('logout')}}">Гарах</a></button>
             </form>
         </div>
     </nav>

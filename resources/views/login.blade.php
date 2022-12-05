@@ -21,10 +21,12 @@
           <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         </div>
         <div class="form-group">
+      
           <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
         </div>
         <button type="submit" class="btn btn-primary">Нэвтрэх</button>
         <button type="reset" class="btn btn-primary" value="Reset">Арилгах</button>
+    
       </form>
     </div>
   </div>

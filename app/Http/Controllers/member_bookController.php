@@ -66,7 +66,7 @@ class member_bookController extends Controller
                 $res->save();
             }
 
-            return redirect(url('member_listbook'))->with('message', 'Таны захиалгийг хүлээн авлаа!'); 
+            return redirect(url('member_listbook'))->with('message', 'Таны захиалагийг хүлээн авлаа!'); 
         }
         if ($req->type == 0) {
             $res = new book_sale();
@@ -75,7 +75,7 @@ class member_bookController extends Controller
             $res->address = $req->address;
             $res->save();
 
-            return redirect(url('member_listbook'))->with('message', 'Таны захиалгийг хүлээн авлаа !'); 
+            return redirect(url('member_listbook'))->with('message', 'Таны захиалагийг хүлээн авлаа !'); 
         }
         return redirect()->back()->with('message', 'Үлдэгдэл хүрэлцэхгүй байна!!!');
     }
