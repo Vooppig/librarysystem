@@ -22,7 +22,7 @@
   </tbody>
 </table>
 <div>
-  <form action="member_listbook" method="post">
+  <form action="/orderplace" method="post">
     @csrf
     <div class="form-group">
       @if($tul == "Ном Түрээслэх")
