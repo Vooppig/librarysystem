@@ -11,7 +11,7 @@
                 <p>Зохиогч: {{ $book->author }}</p>
                 <p>Төрөл: {{ $book->cat_name }}</p>
                 <p>Төлөв: {{ $book->flag_name }}</p>
-                <p>Үнэ:{{$book->price}}</p>
+                <p>Үнэ:{{$book->price}}₮</p>
             </b>
         </div>
         <div class="col-sm-6">

@@ -9,8 +9,9 @@
     <tr>
       <td> Номны нэр: <b>{{ $book->title }}</b></td>
       <td><img src="{{ asset('storage/images/'.$book->image) }}" alt="" width="300px" height="200px"></td>
-      <td>Үнэ: ₮{{$book->price}}</td>
-      <td>Торгууль: </td>
+      <td>Үнэ: {{$book->price}}₮</td>
+      <td>Торгууль: {{$book->fine}} </td>
+      <td>Захиалагийн төрөл</td>
       <td><button class="btn btn-primary">Хүсэлт сунгах</button></td>
     </tr>
     @endforeach
