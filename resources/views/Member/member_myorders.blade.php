@@ -3,10 +3,11 @@
 @section('content')
 <h1>My orders</h1>
 <table class="table">
+
   <tbody>
-  @foreach($books as $book)
+    @foreach($books as $book)
     <tr>
-    <td>{{ $book->title }}</td>
+      <td>{{ $book->title }}</td>
       <td><img src="{{ asset('storage/images/'.$book->image) }}" alt="" width="150px" height="150px"></td>
       <td>Үнэ</td>
       <td>₮{{$book->price}}</td>
@@ -19,4 +20,3 @@
   </tbody>
 </table>
 @endsection
-

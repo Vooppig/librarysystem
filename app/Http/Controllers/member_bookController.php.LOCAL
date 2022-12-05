@@ -8,7 +8,6 @@ use App\Models\book_reservation;
 use App\Models\book_sale;
 use Illuminate\Http\Request;
 use App\Models\book_view;
-use App\Models\library_system_res_view;
 use App\Models\member;
 
 session_start();
@@ -82,9 +81,7 @@ class member_bookController extends Controller
     }
     public function myOrders()
     {
-        $res =  library_system_res_view::where('created_by', $_SESSION['user']['id'])->get();
-
-        return view('Member.member_myorders', ['books' => $res]);
-        // return $res;
+       $res =  book_reservation::where('created_by', $_SESSION['user']['id'])->orderby('reserve_datetime')->get();
+       return view('Member.member_myorders',['books'=>$res]);
     }
 };

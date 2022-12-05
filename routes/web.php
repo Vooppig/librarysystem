@@ -23,7 +23,6 @@ Route::post('insertbook', [Manager_Controller::class, 'do_insert']);
 Route::get('listbook', [Manager_Controller::class, 'index']);
 Route::get('deletebook/{id}', [Manager_Controller::class, 'delete']);
 Route::get('booksearch', [Manager_Controller::class, 'search_forum']);
-Route::post('booksearch', [Manager_Controller::class, 'search']);
 Route::get('updatebook/{id}', [Manager_Controller::class, 'update_forum']);
 Route::post('updatebook', [Manager_Controller::class, 'update']);
 
@@ -41,5 +40,5 @@ Route::get('detail/{id}', [member_bookController::class, 'detail']);
 Route::get("member_orderdetail/{id}", [member_bookController::class, 'orderdetail']);
 Route::get("member_orderbuydetail/{id}", [member_bookController::class, 'orderbuydetail']);;
 Route::get('search', [member_bookController::class, 'search']);
-Route::post('orderplace',[member_bookController::class,'place_order']);
+Route::post('orderplace', [member_bookController::class, 'place_order']);
 Route::get('member_myorders', [member_bookController::class, 'myOrders']);

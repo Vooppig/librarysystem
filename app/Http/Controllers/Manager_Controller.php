@@ -77,9 +77,8 @@ class Manager_Controller extends Controller
     }
     public function search(Request $request)
     {
-        
-        $books = book_view::where('title','like', '%'.  $request->input('query'). '%')->orWhere('isbn','like','%'. $request->input('query').'%')->orWhere('author','like','%'. $request->input('query').'%')->orWhere('detail','like','%'. $request->input('query').'%')->get();
-        return view('Manager.book.listbook',compact('books'));
+        $books = book_view::where('title', 'like', '%' .  $request->input('query') . '%')->orWhere('isbn', 'like', '%' . $request->input('query') . '%')->orWhere('author', 'like', '%' . $request->input('query') . '%')->orWhere('detail', 'like', '%' . $request->input('query') . '%')->get();
+        return view('Manager.book.listbook', compact('books'));
     }
     public function update_forum($id)
     {
