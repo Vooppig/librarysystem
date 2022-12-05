@@ -64,6 +64,7 @@ class member_bookController extends Controller
             $bank_account->save();
             if ($req->type == 1) {
                 $res = new book_reservation();
+                $res->type = 1;
                 $res->created_by = $_SESSION['user']['id'];
                 $res->book_id = $req->input('id');
                 $res->save();
@@ -73,6 +74,7 @@ class member_bookController extends Controller
         }
         if ($req->type == 0) {
             $res = new book_sale();
+            $res->type = 2;
             $res->created_by = $_SESSION['user']['id'];
             $res->book_id = $req->input('id');
             $res->address = $req->address;
@@ -92,7 +94,7 @@ class member_bookController extends Controller
     {
         $card_num = member::find($_SESSION['user']['id'])->credit_card_num;
         $bank_account = bank_account::where('card_num', $card_num)->get();
-    
-        return view('Member.member_account',['amount'=>$bank_account]);
+
+        return view('Member.member_account', ['amount' => $bank_account]);
     }
 };
