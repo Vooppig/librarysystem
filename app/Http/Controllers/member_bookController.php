@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\bank_account;
+use App\Models\book_account;
 use Illuminate\Support\Facades\DB;
 use App\Models\book_reservation;
 use App\Models\book_sale;
 use Illuminate\Http\Request;
 use App\Models\book_view;
+use App\Models\library_system_member;
 use App\Models\library_system_res_view;
 use App\Models\member;
 
@@ -84,6 +86,13 @@ class member_bookController extends Controller
     {
         $res =  library_system_res_view::where('created_by', $_SESSION['user']['id'])->get();
         return view('Member.member_myorders', ['books' => $res]);
-        // return $res;
+        //  return $res;
+    }
+    public function Account()
+    {
+        $card_num = member::find($_SESSION['user']['id'])->credit_card_num;
+        $bank_account = bank_account::where('card_num', $card_num)->get();
+    
+        return view('Member.member_account',['amount'=>$bank_account]);
     }
 };

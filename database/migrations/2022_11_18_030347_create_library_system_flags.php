@@ -37,6 +37,8 @@ return new class extends Migration
                 'name' => 'Цахим болон Хэвлэмэл'
             )
         );
+        
+        
     }
 
     /**

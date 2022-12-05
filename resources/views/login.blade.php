@@ -26,7 +26,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Нэвтрэх</button>
         <button type="reset" class="btn btn-primary" value="Reset">Арилгах</button>
-    
       </form>
     </div>
   </div>
