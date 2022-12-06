@@ -9,10 +9,14 @@
     <tr>
       <td> Номны нэр: <b>{{ $book->title }}</b></td>
       <td><img src="{{ asset('storage/images/'.$book->image) }}" alt="" width="300px" height="200px"></td>
-      <td>Захиалагийн төрөл: {{$book->type}}</td>
-      <td>Торгууль: {{$book->fine}} </td>
-      <td>Үнэ: {{$book->price}}₮</td>
-      <td><button class="btn btn-primary">Хүсэлт сунгах</button></td>
+      <td>Захиалагийн төрөл: <b>{{$book->type}}</b></td>
+      <td>Үнэ: <b>{{$book->price}}₮</b></td>
+      @if($book->type=='Түрэслэх')
+      <td>Торгууль: <b>{{$book->fine}}</b></td>
+      <td class="from date">Түрээс эхэлсэн: <b>{{$book->reserve_date}}</b></td>
+      <td class="end date">Түрээсийн хугацаа дуусах: <b>{{$book->end_date}}</b></td>
+      <td><button class="btn btn-primary">Хугацаа сунгах</button></td>
+      @endif
     </tr>
     @endforeach
   </tbody>
