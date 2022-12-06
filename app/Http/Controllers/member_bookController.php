@@ -41,14 +41,14 @@ class member_bookController extends Controller
         $books = book_view::all();
         $books = $books->where('id', $id)->first();
         $books->price = $books->price * 0.3;
-        return view('Member.member_orderdetail', ['tul' => "Ном Түрээслэх"], ['books' => $books], ['type' => 0]);
+        return view('Member.member_orderdetail', ['tul' => "Ном Түрээслэх", 'books' => $books, 'type' => 0]);
     }
     function orderbuydetail($id)
     {
         $this->logedin();
         $books = book_view::all();
         $books = $books->where('id', $id)->first();
-        return view('Member.member_orderdetail', ['tul' => "Худалдаж авах"], ['books' => $books], ['type' => 1]);
+        return view('Member.member_orderdetail', ['tul' => "Худалдаж авах", 'books' => $books, 'type' => 1]);
     }
     function search(Request $request)
     {
@@ -59,8 +59,9 @@ class member_bookController extends Controller
     {
         $card_num = member::find($_SESSION['user']['id'])->credit_card_num;
         $bank_account = bank_account::where('card_num', $card_num)->first();
-        if ($bank_account->amount - $req->price > 0) {
-            $bank_account->amount = $bank_account->amount - $req->price;
+        $diff = $bank_account->amount - $req->price;
+        if ($diff > 0) {
+            $bank_account->amount = $diff;
             $bank_account->save();
             $res = new book_reservation();
             $res->type = ($req->type == 1) ? 'Түрэслэх' : 'Худалдаж авах';

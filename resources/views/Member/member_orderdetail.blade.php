@@ -27,6 +27,7 @@
     <div class="form-group">
       <input type="hidden" name="type" value="{{$type}}">
       <input type="hidden" name="id" value="{{ $books->id }}">
+      <input type="hidden" name="price" id="" readonly value="{{$books->price}}">
       <textarea name="address" placeholder="Хүргэх хаяг оруулна уу" class="form-control"></textarea>
     </div>
     <div class="form-group">
