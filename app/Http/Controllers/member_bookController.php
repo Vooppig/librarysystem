@@ -62,19 +62,8 @@ class member_bookController extends Controller
         if ($bank_account->amount - $req->price > 0) {
             $bank_account->amount = $bank_account->amount - $req->price;
             $bank_account->save();
-            if ($req->type == 1) {
-                $res = new book_reservation();
-                $res->type = 1;
-                $res->created_by = $_SESSION['user']['id'];
-                $res->book_id = $req->input('id');
-                $res->save();
-            }
-
-            return redirect(url('member_listbook'))->with('message', 'Таны захиалагийг хүлээн авлаа!');
-        }
-        if ($req->type == 0) {
-            $res = new book_sale();
-            $res->type = 2;
+            $res = new book_reservation();
+            $res->type = ($req->type == 1) ? 'Түрэслэх' : 'Худалдаж авах';
             $res->created_by = $_SESSION['user']['id'];
             $res->book_id = $req->input('id');
             $res->address = $req->address;
@@ -87,7 +76,7 @@ class member_bookController extends Controller
     public function myOrders()
     {
         $res =  library_system_res_view::where('created_by', $_SESSION['user']['id'])->get();
-         return view('Member.member_myorders', ['books' => $res]);
+        return view('Member.member_myorders', ['books' => $res]);
         // return $res;
     }
     public function Account()
