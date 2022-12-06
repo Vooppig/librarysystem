@@ -41,14 +41,14 @@ class member_bookController extends Controller
         $books = book_view::all();
         $books = $books->where('id', $id)->first();
         $books->price = $books->price * 0.3;
-        return view('Member.member_orderdetail', ['tul' => "Ном Түрээслэх", 'type' => 1, 'books' => $books]);
+        return view('Member.member_orderdetail', ['tul' => "Ном Түрээслэх"], ['books' => $books], ['type' => 0]);
     }
     function orderbuydetail($id)
     {
         $this->logedin();
         $books = book_view::all();
         $books = $books->where('id', $id)->first();
-        return view('Member.member_orderdetail', ['tul' => "Худалдаж авах", 'type' => 2, 'books' => $books]);
+        return view('Member.member_orderdetail', ['tul' => "Худалдаж авах"], ['books' => $books], ['type' => 1]);
     }
     function search(Request $request)
     {
@@ -62,9 +62,19 @@ class member_bookController extends Controller
         if ($bank_account->amount - $req->price > 0) {
             $bank_account->amount = $bank_account->amount - $req->price;
             $bank_account->save();
+            if ($req->type == 1) {
+                $res = new book_reservation();
+                $res->type = 1;
+                $res->created_by = $_SESSION['user']['id'];
+                $res->book_id = $req->input('id');
+                $res->save();
+            }
 
-            $res = new book_reservation();
-            $res->type = ($req->type == 1) ? 'Түрэслэх' : 'Худалдаж авах';
+            return redirect(url('member_listbook'))->with('message', 'Таны захиалагийг хүлээн авлаа!');
+        }
+        if ($req->type == 0) {
+            $res = new book_sale();
+            $res->type = 2;
             $res->created_by = $_SESSION['user']['id'];
             $res->book_id = $req->input('id');
             $res->address = $req->address;
@@ -77,7 +87,7 @@ class member_bookController extends Controller
     public function myOrders()
     {
         $res =  library_system_res_view::where('created_by', $_SESSION['user']['id'])->get();
-        return view('Member.member_myorders', ['books' => $res]);
+         return view('Member.member_myorders', ['books' => $res]);
         // return $res;
     }
     public function Account()
