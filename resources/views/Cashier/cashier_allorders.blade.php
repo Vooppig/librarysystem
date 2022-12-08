@@ -1,7 +1,7 @@
-@extends('Member.member_master')
+@extends('Cashier.cashier_master')
 @section('title', 'Ном захиалга')
 @section('content')
-<h1>Таны захиалагийн түүх </h1>
+<h1>Захиалгын түүх </h1>
 <table class="table">
 
   <tbody>
@@ -15,7 +15,6 @@
       <td>Торгууль: <b>{{$book->fine}}</b></td>
       <td class="from date">Түрээс эхэлсэн: <b>{{$book->reserve_date}}</b></td>
       <td class="end date">Түрээсийн хугацаа дуусах: <b>{{$book->end_date}}</b></td>
-      <td><button onClick="window.location=`{{ url('ext_req')}}/{{$book->id}}`" class="btn btn-primary">Хугацаа сунгах</button></td>
       @endif
     </tr>
     @endforeach

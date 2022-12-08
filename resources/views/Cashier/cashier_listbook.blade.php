@@ -1,4 +1,4 @@
-@extends('Member.member_master')
+@extends('Cashier.cashier_master')
 @section('title', 'Номын жагсаалт')
 @section('style')
 <style>

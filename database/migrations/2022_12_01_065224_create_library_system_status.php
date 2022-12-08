@@ -36,7 +36,13 @@ return new class extends Migration
                 'id' => '3',
                 'name' => 'Татгалзсан'
             )
-            );
+        );
+        DB::table('library_system_status')->insert(
+            array(
+                'id' => '4',
+                'name' => 'Амжилттай'
+            )
+        );
     }
 
     /**

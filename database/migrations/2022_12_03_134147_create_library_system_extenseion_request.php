@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('created_by');
             $table->bigInteger('res_id');
-            $table->integer('status');
+            $table->string('status')->default('Хүлээгдэж байгаа');
             $table->date('issued_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('issued_datetime')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->date('accepted_date')->nullable();

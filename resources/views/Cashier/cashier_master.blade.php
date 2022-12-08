@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <a class="navbar-brand" href="{{url('member_listbook')}}">Temuuder&Nurka Номын дэлгүүр</a>
+        <a class="navbar-brand" href="{{url('cashier_listbook')}}">Temuuder&Nurka Номын дэлгүүр</a>
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,14 +22,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{url('member_listbook')}}">Бүх ном</a>
+                        <a class="nav-link" href="{{url('cashier_listbook')}}">Бүх ном</a>
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link disabled" href="{{url('member_myorders')}}">Захилагын түүх харах</a>
+                        <a class="nav-link disabled" href="{{url('cashier_allorders')}}">Захиалагууд</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link disabled" href="{{url('member_account')}}">Данс</a>
+                        <a class="nav-link disabled" href="{{url('cashier_request')}}">Захиалага сунгах хүсэлтүүд</a>
                     </li>
                 </ul>
                 <form action="/search" class="form-inline my-2 my-lg-0">

@@ -29,7 +29,7 @@
     }
 
     .card {
-        box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0px 15px 0 rgba(0, 69, 65, 5);
         margin: 6px;
         padding: 20px;
         text-align: center;
