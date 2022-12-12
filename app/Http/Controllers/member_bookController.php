@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\request_send;
 use App\Models\bank_account;
 use App\Models\book_account;
 use Illuminate\Support\Facades\DB;
@@ -93,6 +94,7 @@ class member_bookController extends Controller
         $ext->created_by = $_SESSION['user']['id'];
         $ext->res_id = $req->id;
         $ext->save();
+        event(new request_send('New order request'));
         return redirect('member_listbook');
     }
     public function member_req()

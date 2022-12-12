@@ -45,10 +45,11 @@ Route::post('orderplace', [member_bookController::class, 'place_order']);
 Route::get('member_myorders', [member_bookController::class, 'myOrders']);
 Route::get('member_account', [member_bookController::class, 'account']);
 Route::get("ext_req/{id}", [member_bookController::class, "ext_req"]);
-Route::get('member_req', [member_bookController::class,"member_req"]);
+Route::get('member_req', [member_bookController::class, "member_req"]);
 
 //cashier.book
 Route::get('cashier_listbook', [cashier_controller::class, 'index']);
-Route::get('cashier_allorders',[cashier_controller::class, 'allOrders']);
+Route::get('cashier_allorders', [cashier_controller::class, 'allOrders']);
 Route::get('cashier_request', [cashier_controller::class, 'request']);
 Route::get('cashier_ext', [cashier_controller::class, 'ext']);
+Route::get('ext_approve/{id}', [cashier_controller::class, 'approve']);
