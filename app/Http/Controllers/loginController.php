@@ -13,7 +13,11 @@ session_start();
 class loginController extends Controller
 {
     function register(Request $request)
-    {
+    {   
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
         $user = new library_system_member();
         $user->name = $request->name;
         $user->email = $request->email;
