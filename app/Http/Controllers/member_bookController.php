@@ -95,4 +95,9 @@ class member_bookController extends Controller
         $ext->save();
         return redirect('member_listbook');
     }
+    public function member_req()
+    {
+        $reqs = ext_req::where('created_by', $_SESSION['user']['id'])->orderBy('issued_date', 'DESC');
+        return 1;
+    }
 };

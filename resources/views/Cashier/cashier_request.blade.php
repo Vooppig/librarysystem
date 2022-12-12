@@ -16,8 +16,7 @@
       <td class="from date">Түрээс эхэлсэн: <b>{{$book->reserve_date}}</b></td>
       <td class="end date">Түрээсийн хугацаа дуусах: <b>{{$book->end_date}}</b></td>
       <td><button href="{{url('member_orderdetail')}}" class="btn btn-primary">Хугацаа сунгах</button></td>
-      @endif href=
-      
+      @endif
     </tr>
     @endforeach
   </tbody>
